@@ -27,32 +27,32 @@ This repository is a fork of the original project [MISP-Wazuh Integration](https
 
 1. **Clone the Repository:**
 
-   \`\`\`bash
+   ```
    git clone https://github.com/yourusername/MISP-Wazuh-Integration.git
    cd MISP-Wazuh-Integration
-   \`\`\`
+   ```
 
 2. **Install Python Dependencies:**
 
    Ensure all required Python packages are installed:
 
-   \`\`\`bash
+   ```
    pip install -r requirements.txt
-   \`\`\`
+   ```
 
 3. **Configure Wazuh Manager:**
 
    - Place the script in the appropriate directory on the Wazuh Manager:
    
-     \`\`\`bash
+     ```
      sudo cp custom-misp.py /var/ossec/integrations/
-     \`\`\`
+     ```
 
    - Ensure the script is executable:
 
-     \`\`\`bash
+     ```
      sudo chmod +x /var/ossec/integrations/custom-misp.py
-     \`\`\`
+     ```
 
 4. **Configure MISP:**
 
@@ -60,10 +60,10 @@ This repository is a fork of the original project [MISP-Wazuh Integration](https
    - Generate an API key from MISP under `Administration > List Users > Select User > Auth Key`.
    - Update the MISP API key and URL in the script:
 
-     \`\`\`python
+     ```
      misp_base_url = "https://<MISP_IP>/attributes/restSearch/"
      misp_api_auth_key = "<Your_MISP_API_Key>"
-     \`\`\`
+     ```
 
 ## Usage
 
@@ -71,15 +71,15 @@ This repository is a fork of the original project [MISP-Wazuh Integration](https
 
 The script is designed to be triggered automatically by Wazuh when an alert matches the configured criteria. However, you can also run it manually for testing purposes:
 
-\`\`\`bash
+```
 sudo /var/ossec/integrations/custom-misp.py /var/ossec/integrations/tests/test_alert.json
-\`\`\`
+```
 
 ### Example Test Alert
 
 You can create a test alert JSON file to simulate a Wazuh alert:
 
-\`\`\`json
+```
 {
    "rule": {
        "groups": ["windows", "sysmon_event1", "sysmon_event1"]
@@ -97,7 +97,7 @@ You can create a test alert JSON file to simulate a Wazuh alert:
        "ip": "192.168.34.54"
    }
 }
-\`\`\`
+```
 
 Save this as `test_alert.json` in the `/var/ossec/integrations/tests/` directory and use it to test the script.
 
